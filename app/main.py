@@ -25,10 +25,9 @@ class IntegerRange:
     def __set__(self, instance: object, value: int) -> None:
         if not isinstance(value, int):
             raise TypeError
-        if self.min_amount <= value <= self.max_amount:
-            setattr(instance, self.private_name, value)
-        else:
+        if not self.min_amount <= value <= self.max_amount:
             raise ValueError
+        setattr(instance, self.private_name, value)
 
 
 class Visitor:
